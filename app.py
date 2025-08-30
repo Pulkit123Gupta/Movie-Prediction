@@ -1,7 +1,7 @@
 import streamlit as st
 import pickle
 import pandas as pd
-import requests 
+import requests
 
 # -------------------------------
 # Page Configuration
@@ -11,6 +11,7 @@ st.set_page_config(
     page_icon="🎬",
     layout="wide"
 )
+
 
 # -------------------------------
 # Helper Functions
@@ -36,13 +37,13 @@ def recommend(movie):
     recommended_movies = []
     recommended_posters = []
     recommended_links = []
-    
+
     for i in movies_list:
         movie_id = movies.iloc[i[0]].movie_id
         recommended_movies.append(movies.iloc[i[0]].title)
         recommended_posters.append(fetch_poster(movie_id))
         recommended_links.append(f"https://www.themoviedb.org/movie/{movie_id}")
-    
+
     return recommended_movies, recommended_posters, recommended_links
 
 
